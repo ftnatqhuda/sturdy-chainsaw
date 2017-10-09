@@ -1,0 +1,27 @@
+package tuto2;
+
+public class Stud 
+{
+	int studentAge;
+	
+	public Stud(String name)
+	{
+		System.out.println("Name chosen is : " + name);
+	}
+	public void setAge(int age)
+	{
+		studentAge = age;
+	}
+	public int getAge()
+	{
+		System.out.println("Student's age is : " + studentAge);
+		return studentAge;
+	}
+	public static void main(String[]args)
+	{
+		Stud myStudent = new Stud("Fatin");
+		myStudent.setAge( 2 );
+		myStudent.getAge( );
+		System.out.println("Variable value : " + myStudent.studentAge);
+	}
+}
