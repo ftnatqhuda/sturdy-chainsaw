@@ -1,0 +1,30 @@
+package sn3;
+import java.util.Scanner;
+public class LowestScore 
+{
+	public static void main(String[]args)
+	{
+		int lowestScore = 100;
+		String lowestScoreName = " ";
+		Scanner input = new Scanner (System.in);
+		System.out.print("Enter the number of students : ");
+		int num = input.nextInt();
+		System.out.println("Enter student's name and score. ");
+		
+		for(int i=0; i<num; i++)
+		{
+			System.out.print("Student's name : ");
+			String name = input.next();
+			System.out.print("Student's score : ");
+			int score = input.nextInt();
+		
+			if(score<lowestScore)
+			{
+				lowestScore = score;
+				lowestScoreName = name;
+			}
+		}
+		System.out.println("Student with the lowest score is " + lowestScoreName);
+	}
+			
+}
