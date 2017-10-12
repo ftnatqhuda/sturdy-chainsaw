@@ -1,0 +1,32 @@
+package s2;
+import java.util.Scanner;
+public class Salesman_commission 
+{
+	public static void main(String[] args) 
+	{
+		Scanner input = new Scanner(System.in);
+		System.out.print("Enter the total sale : ");
+		double sale = input.nextDouble();
+
+		if (sale < 500)
+		{
+			System.out.println("The commission for the sale is 5%.");
+			System.out.println("The commission for the salesman is RM" + 0.05*sale);
+		}
+		else if (sale < 1000)
+		{
+			System.out.println("The commission for the sale is 7%.");
+			System.out.println("The commission for the salesman is RM" + 0.07*sale);
+		}
+		else if (sale < 1500)
+		{
+			System.out.println("The commission for the sale is 9%.");
+			System.out.println("The commission for the salesman is RM" + 0.09*sale);
+		}
+		else if (sale >= 1500)
+		{
+			System.out.println("The commission for the sale is 12%.");
+			System.out.println("The commission for the salesman is " + 0.12*sale);
+		}
+	}
+}
