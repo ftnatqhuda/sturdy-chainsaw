@@ -1,0 +1,112 @@
+package kurus;
+
+public class Task1asg 
+{
+	public static void main(String[] args){
+		
+		java.util.Scanner input=new java.util.Scanner(System.in);
+		
+		
+		//enter yearly interest rate
+		System.out.print("Enter yearly interest rate, for example"
+				+ " 8.25: ");
+		double annualInterestRate=input.nextDouble();
+		
+		System.out.print("Enter second yearly interest rate, for example"
+				+ " 8.25: ");
+		double annualInterestRate2=input.nextDouble();
+		
+		//enter no of year
+		System.out.print("Enter number of years as an integer: ");
+		int numberOfYears=input.nextInt();
+		
+		System.out.print("Enter second number of years as an integer: ");
+		int numberOfYears2=input.nextInt();
+		
+		//enter loan amount
+		System.out.print("Enter loan amount, for example, 120000.95: ");
+		double loanAmount=input.nextDouble();
+		
+		System.out.print("Enter second loan amount, for example, 120000.95: ");
+		double loanAmount2=input.nextDouble();
+		
+		//create loan object
+		Loan loan= new Loan(annualInterestRate, numberOfYears, loanAmount);
+		Loan loan2= new Loan(annualInterestRate2, numberOfYears2, loanAmount2);
+		
+		//display loan date, monthly payment, n total payment
+		System.out.printf("The loan was created on %s\n" + "The monthly payment is RM%.2f\nThe total payment is RM%.2f\n", 
+				loan.getLoanDate().toString(), loan.getMonthlyPayment(), loan.getTotalPayment());
+		System.out.printf("The loan was created on %s\n" + "The monthly payment is RM%.2f\nThe total payment is RM%.2f\n", 
+				loan2.getLoanDate().toString(), loan2.getMonthlyPayment(), loan2.getTotalPayment());
+
+	}
+
+}
+
+
+
+
+package kurus;
+
+public class Loan 
+{
+		private double annualInterestRate;
+		private int numberOfYears;
+		private double loanAmount;
+		private java.util.Date loanDate;
+		
+		public Loan()
+		{
+			this(2.5, 1, 1000);	
+		}
+		public Loan(double annualInterestRate, int numberOfYears, double LoanAmount)
+		{
+			this.annualInterestRate=annualInterestRate;
+			this.numberOfYears=numberOfYears;
+			this.loanAmount = LoanAmount;
+			loanDate=new java.util.Date();
+		}
+		public double getAnnualInterestRate()
+		{
+			return annualInterestRate;
+		}
+		public void setAnnualInterestRate(double annualInterestRate)
+		{
+			this.annualInterestRate=annualInterestRate;
+		}
+		public int getNumberOfYears()
+		{
+			return numberOfYears;
+		}
+		public void setNumberOfYears(int numberOfYears)
+		{
+			this.numberOfYears=numberOfYears;
+		}
+		public double getLoanAmount()
+		{
+			return loanAmount;
+		}
+		public void setLoanAmount(double loanAmount)
+		{
+			this.loanAmount=loanAmount;
+		}
+		public double getMonthlyPayment()
+		{
+			double monthlyInterestRate = annualInterestRate / 1200;
+			double monthlyPayment = loanAmount * monthlyInterestRate /
+					(1-(1/Math.pow(1+monthlyInterestRate, numberOfYears*12)));		
+					
+					return monthlyPayment;
+		}
+		
+		public double getTotalPayment()
+		{
+			double totalPayment = getMonthlyPayment() * numberOfYears * 12;
+			return totalPayment;
+		}
+		public java.util.Date getLoanDate()
+		{
+			return loanDate;
+		}
+}
