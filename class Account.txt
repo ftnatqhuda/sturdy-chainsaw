@@ -1,0 +1,92 @@
+package kurus;
+
+public class Account
+{
+	private int id;
+	private double balance;
+	private double annualInterestRate;
+	private double monthlyInterest;
+	private java.util.Date dateCreated;
+
+	public Account()
+	{
+		this(1122, 20000, 4.5);
+	}
+	public Account(int id, double balance, double annualInterestRate)
+	{
+		this.id = id;
+		this.balance = balance;
+		this.annualInterestRate = annualInterestRate;
+		dateCreated = new java.util.Date();
+	}
+	public int getId()
+	{
+		return id;
+	}
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+	public double getBalance()
+	{
+		return balance;
+	}
+	public void setBalance(double balance)
+	{
+		this.balance = balance;
+	}
+	public double getAnnualInterestRate()
+	{
+		return annualInterestRate;
+	}
+	public void setAnnualInterestRate(double annualInterestRate)
+	{
+		this.annualInterestRate = annualInterestRate;
+	}
+	public java.util.Date getDateCreated()
+	{
+		return dateCreated;
+	}
+	public double getMonthlyInterestRate()
+	{
+		double monthlyInterestRate = (annualInterestRate) / 12;
+		return monthlyInterestRate;
+	}
+	public double getMonthlyInterest()
+	{
+		double monthlyInterest = balance * getMonthlyInterestRate();
+		return monthlyInterest;
+	}
+	public void setMonthlyInterest(double monthlyInterest)
+	{
+		this.monthlyInterest = monthlyInterest;
+	}
+	public void withdraw(double amount)
+	{
+		this.balance -= amount;
+	}
+	public void deposit(double amount)
+	{
+		this.balance += amount;
+	}
+}
+
+
+
+
+
+
+package kurus;
+
+public class AccountT 
+{
+	public static void main(String[]args)
+	{
+		Account account1 = new Account(1122, 20000, 4.5);
+        account1.withdraw(2500);
+        account1.deposit(3000);
+        System.out.println("Balance : RM " + account1.getBalance());
+        System.out.println("Monthly Interest : RM " + account1.getMonthlyInterest());
+        System.out.println("Date Created : " + account1.getDateCreated());
+	}
+}
