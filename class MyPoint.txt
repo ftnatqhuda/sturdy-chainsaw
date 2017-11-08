@@ -1,0 +1,56 @@
+package kurus;
+
+public class MyPoint
+{
+	private double x;
+	private double y;
+	public static double distance;
+	
+	public MyPoint()
+	{
+		this(0, 0);
+	}
+	public MyPoint(double x, double y)
+	{
+		this.x = x;
+		this.y = y;
+	}
+	public double getX()
+	{
+		return x;
+	}
+	public void setX(double x)
+	{
+		this.x = x;
+	}
+	public double getY()
+	{
+		return y;
+	}
+	public void setY(double y)
+	{
+		this.y = y;
+	}
+	public static double distance(MyPoint p1,  MyPoint p2)
+	{
+		double distance = Math.sqrt(Math.pow(p2.x - p1.x,2)+Math.pow(p2.y - p1.y, 2));
+		return distance;
+	}
+}
+
+
+
+
+
+package kurus;
+
+public class TestMyPoint 
+{
+	public static void main(String[] args)
+	{
+		MyPoint p1 = new MyPoint();
+		MyPoint p2 = new MyPoint(10, 30.5);
+
+		System.out.println("The distance is " + MyPoint.distance(p1, p2));
+	} 
+}
